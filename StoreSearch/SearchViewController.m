@@ -14,7 +14,7 @@ static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 static NSString *const NothingFoundCellIdentifier = @"NothingFoundCell";
 
 @interface SearchViewController ()
-@property (nonatomic, weak)IBOutlet UISearchBar *searcBar;
+@property (nonatomic, weak)IBOutlet UISearchBar *searchBar;
 @property (nonatomic, weak)IBOutlet UITableView *tableView;
 
 @end
@@ -23,7 +23,7 @@ static NSString *const NothingFoundCellIdentifier = @"NothingFoundCell";
     NSMutableArray *searchResults;
 }
 
-@synthesize searcBar = _searcBar;
+@synthesize searchBar = _searcBar;
 @synthesize tableView = _tableView;
 
 
@@ -37,6 +37,8 @@ static NSString *const NothingFoundCellIdentifier = @"NothingFoundCell";
     [self.tableView registerNib:cellNib forCellReuseIdentifier:NothingFoundCellIdentifier];
     
     self.tableView.rowHeight = 80;
+    
+    [self.searchBar becomeFirstResponder];
     
     
 	// Do any additional setup after loading the view, typically from a nib.
