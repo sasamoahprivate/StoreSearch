@@ -13,8 +13,8 @@
 		BE7F0976154C223F00D6CC65 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE7F0974154C223F00D6CC65 /* InfoPlist.strings */; };
 		BE7F0978154C223F00D6CC65 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F0977154C223F00D6CC65 /* main.m */; };
 		BE7F097C154C223F00D6CC65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F097B154C223F00D6CC65 /* AppDelegate.m */; };
-		BE7F097F154C223F00D6CC65 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F097E154C223F00D6CC65 /* ViewController.m */; };
-		BE7F0982154C223F00D6CC65 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7F0980154C223F00D6CC65 /* ViewController.xib */; };
+		BE7F097F154C223F00D6CC65 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F097E154C223F00D6CC65 /* SearchViewController.m */; };
+		BE7F0982154C223F00D6CC65 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7F0980154C223F00D6CC65 /* SearchViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,15 +22,15 @@
 		BE7F096B154C223F00D6CC65 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BE7F096D154C223F00D6CC65 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BE7F096F154C223F00D6CC65 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		BE7F0973154C223F00D6CC65 /* StoreSearch-Info.plist */ = {isa = PBXFileReference; path = "StoreSearch-Info.plist"; sourceTree = "<group>"; };
+		BE7F0973154C223F00D6CC65 /* StoreSearch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StoreSearch-Info.plist"; sourceTree = "<group>"; };
 		BE7F0975154C223F00D6CC65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BE7F0977154C223F00D6CC65 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BE7F0979154C223F00D6CC65 /* StoreSearch-Prefix.pch */ = {isa = PBXFileReference; path = "StoreSearch-Prefix.pch"; sourceTree = "<group>"; };
-		BE7F097A154C223F00D6CC65 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		BE7F0979154C223F00D6CC65 /* StoreSearch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StoreSearch-Prefix.pch"; sourceTree = "<group>"; };
+		BE7F097A154C223F00D6CC65 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BE7F097B154C223F00D6CC65 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BE7F097D154C223F00D6CC65 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
-		BE7F097E154C223F00D6CC65 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		BE7F0981154C223F00D6CC65 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		BE7F097D154C223F00D6CC65 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		BE7F097E154C223F00D6CC65 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		BE7F0981154C223F00D6CC65 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SearchViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +79,9 @@
 			children = (
 				BE7F097A154C223F00D6CC65 /* AppDelegate.h */,
 				BE7F097B154C223F00D6CC65 /* AppDelegate.m */,
-				BE7F097D154C223F00D6CC65 /* ViewController.h */,
-				BE7F097E154C223F00D6CC65 /* ViewController.m */,
-				BE7F0980154C223F00D6CC65 /* ViewController.xib */,
+				BE7F097D154C223F00D6CC65 /* SearchViewController.h */,
+				BE7F097E154C223F00D6CC65 /* SearchViewController.m */,
+				BE7F0980154C223F00D6CC65 /* SearchViewController.xib */,
 				BE7F0972154C223F00D6CC65 /* Supporting Files */,
 			);
 			path = StoreSearch;
@@ -150,7 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE7F0976154C223F00D6CC65 /* InfoPlist.strings in Resources */,
-				BE7F0982154C223F00D6CC65 /* ViewController.xib in Resources */,
+				BE7F0982154C223F00D6CC65 /* SearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +163,7 @@
 			files = (
 				BE7F0978154C223F00D6CC65 /* main.m in Sources */,
 				BE7F097C154C223F00D6CC65 /* AppDelegate.m in Sources */,
-				BE7F097F154C223F00D6CC65 /* ViewController.m in Sources */,
+				BE7F097F154C223F00D6CC65 /* SearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,12 +178,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		BE7F0980154C223F00D6CC65 /* ViewController.xib */ = {
+		BE7F0980154C223F00D6CC65 /* SearchViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BE7F0981154C223F00D6CC65 /* en */,
 			);
-			name = ViewController.xib;
+			name = SearchViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
