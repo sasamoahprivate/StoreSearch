@@ -15,6 +15,7 @@
 		BE7F097C154C223F00D6CC65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F097B154C223F00D6CC65 /* AppDelegate.m */; };
 		BE7F097F154C223F00D6CC65 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F097E154C223F00D6CC65 /* SearchViewController.m */; };
 		BE7F0982154C223F00D6CC65 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7F0980154C223F00D6CC65 /* SearchViewController.xib */; };
+		BE7F098A154C508D00D6CC65 /* SearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F0989154C508D00D6CC65 /* SearchResult.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		BE7F097D154C223F00D6CC65 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		BE7F097E154C223F00D6CC65 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		BE7F0981154C223F00D6CC65 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SearchViewController.xib; sourceTree = "<group>"; };
+		BE7F0988154C508D00D6CC65 /* SearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResult.h; sourceTree = "<group>"; };
+		BE7F0989154C508D00D6CC65 /* SearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResult.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,8 @@
 				BE7F097E154C223F00D6CC65 /* SearchViewController.m */,
 				BE7F0980154C223F00D6CC65 /* SearchViewController.xib */,
 				BE7F0972154C223F00D6CC65 /* Supporting Files */,
+				BE7F0988154C508D00D6CC65 /* SearchResult.h */,
+				BE7F0989154C508D00D6CC65 /* SearchResult.m */,
 			);
 			path = StoreSearch;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 				BE7F0978154C223F00D6CC65 /* main.m in Sources */,
 				BE7F097C154C223F00D6CC65 /* AppDelegate.m in Sources */,
 				BE7F097F154C223F00D6CC65 /* SearchViewController.m in Sources */,
+				BE7F098A154C508D00D6CC65 /* SearchResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
