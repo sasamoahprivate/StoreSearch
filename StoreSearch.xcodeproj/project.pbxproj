@@ -41,6 +41,7 @@
 		BE7F09BD154C8AD800D6CC65 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BE7F09B6154C8AD800D6CC65 /* Icon.png */; };
 		BE7F09BE154C8AD800D6CC65 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE7F09B7154C8AD800D6CC65 /* Icon@2x.png */; };
 		BE7F09BF154C8AD800D6CC65 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = BE7F09B8154C8AD800D6CC65 /* iTunesArtwork */; };
+		BEAB72A2154E1B46002C28C0 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAB72A1154E1B46002C28C0 /* LoadingCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		BE7F09B6154C8AD800D6CC65 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		BE7F09B7154C8AD800D6CC65 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		BE7F09B8154C8AD800D6CC65 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		BEAB72A1154E1B46002C28C0 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				BE7F09AC154C6E0A00D6CC65 /* SearchResultCell.h */,
 				BE7F09AD154C6E0A00D6CC65 /* SearchResultCell.m */,
 				BE7F09AF154C842D00D6CC65 /* NothingFoundCell.xib */,
+				BEAB72A1154E1B46002C28C0 /* LoadingCell.xib */,
 			);
 			path = StoreSearch;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				BE7F09BD154C8AD800D6CC65 /* Icon.png in Resources */,
 				BE7F09BE154C8AD800D6CC65 /* Icon@2x.png in Resources */,
 				BE7F09BF154C8AD800D6CC65 /* iTunesArtwork in Resources */,
+				BEAB72A2154E1B46002C28C0 /* LoadingCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +403,7 @@
 				BE7F0987154C223F00D6CC65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
