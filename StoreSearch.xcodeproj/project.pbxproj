@@ -52,6 +52,8 @@
 		BEAB72C2154F6789002C28C0 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAB72B6154F6789002C28C0 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BEAB72C3154F6789002C28C0 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAB72B8154F6789002C28C0 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -Wno-unused"; }; };
 		BEAB72C4154F6789002C28C0 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAB72BA154F6789002C28C0 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BEAB72C8154F7B32002C28C0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BEAB72C6154F7B32002C28C0 /* Default.png */; };
+		BEAB72C9154F7B32002C28C0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BEAB72C7154F7B32002C28C0 /* Default@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +121,8 @@
 		BEAB72B8154F6789002C28C0 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		BEAB72B9154F6789002C28C0 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		BEAB72BA154F6789002C28C0 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		BEAB72C6154F7B32002C28C0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BEAB72C7154F7B32002C28C0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,7 @@
 				BE7F097D154C223F00D6CC65 /* SearchViewController.h */,
 				BE7F097E154C223F00D6CC65 /* SearchViewController.m */,
 				BE7F0980154C223F00D6CC65 /* SearchViewController.xib */,
+				BEAB72C5154F7B32002C28C0 /* Launch Images */,
 				BEAB72A4154F6789002C28C0 /* AFNetworking */,
 				BE7F09B1154C8AD700D6CC65 /* Icon */,
 				BE7F098B154C631900D6CC65 /* Images */,
@@ -261,6 +266,15 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
+		BEAB72C5154F7B32002C28C0 /* Launch Images */ = {
+			isa = PBXGroup;
+			children = (
+				BEAB72C6154F7B32002C28C0 /* Default.png */,
+				BEAB72C7154F7B32002C28C0 /* Default@2x.png */,
+			);
+			path = "Launch Images";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -339,6 +353,8 @@
 				BE7F09BE154C8AD800D6CC65 /* Icon@2x.png in Resources */,
 				BE7F09BF154C8AD800D6CC65 /* iTunesArtwork in Resources */,
 				BEAB72A2154E1B46002C28C0 /* LoadingCell.xib in Resources */,
+				BEAB72C8154F7B32002C28C0 /* Default.png in Resources */,
+				BEAB72C9154F7B32002C28C0 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
