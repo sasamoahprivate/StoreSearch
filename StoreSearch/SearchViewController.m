@@ -10,6 +10,7 @@
 #import "SearchResult.h"
 #import "SearchResultCell.h"
 #import "AFJSONRequestOperation.h"
+#import "AFImageCache.h"
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 static NSString *const NothingFoundCellIdentifier = @"NothingFoundCell";
@@ -146,16 +147,9 @@ static NSString *const LoadingCellIdentifier = @"LoadingCell";
             SearchResultCell *cell = (SearchResultCell *)[tableView dequeueReusableCellWithIdentifier:SearchResultCellIdentifier];
         
         SearchResult *searchResult = [searchResults objectAtIndex:indexPath.row];
-        cell.nameLabel.text = searchResult.name;
         
-        NSString *artistName = searchResult.artistName;
-        if (artistName == nil) {
-            artistName = @"Unknown";
-        }
-        
-        NSString *kind = [self kindForDisplay:searchResult.kind];
-        cell.artistNameLabel.text = [NSString stringWithFormat:@"%@ (%@)", artistName, kind];
-        
+        [cell configureForSearchResult:searchResult];
+
         return cell;
     }
     
@@ -314,6 +308,8 @@ static NSString *const LoadingCellIdentifier = @"LoadingCell";
         [self.searchBar resignFirstResponder];
         
         [queue cancelAllOperations];
+        [[AFImageCache sharedImageCache] removeAllObjects];
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
         
         isLoading = YES;
         [self.tableView reloadData];
