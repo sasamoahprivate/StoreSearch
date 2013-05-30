@@ -11,6 +11,8 @@
 #import "SearchResultCell.h"
 #import "AFJSONRequestOperation.h"
 #import "AFImageCache.h"
+#import "DetailViewController.h"
+#import "LandscapeViewController.h"
 
 static NSString *const SearchResultCellIdentifier = @"SearchResultCell";
 static NSString *const NothingFoundCellIdentifier = @"NothingFoundCell";
@@ -20,7 +22,7 @@ static NSString *const LoadingCellIdentifier = @"LoadingCell";
 @interface SearchViewController ()
 @property (nonatomic, weak)IBOutlet UISearchBar *searchBar;
 @property (nonatomic, weak)IBOutlet UITableView *tableView;
-
+//@property (nonatomic, weak) LandscapeViewController *landscapeViewController;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *segmentedControl;
 
 - (IBAction)segmentChanged:(UISegmentedControl *)sender;
@@ -31,11 +33,13 @@ static NSString *const LoadingCellIdentifier = @"LoadingCell";
     NSMutableArray *searchResults;
     BOOL isLoading;
     NSOperationQueue *queue;
+    LandscapeViewController *landscapeViewController;
 }
 
 @synthesize searchBar = _searcBar;
 @synthesize tableView = _tableView;
 @synthesize segmentedControl = _segmentedControl;
+//@synthesize landscapeViewController = _landscapeViewController;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -59,7 +63,6 @@ static NSString *const LoadingCellIdentifier = @"LoadingCell";
     [self.tableView registerNib:cellNib forCellReuseIdentifier:LoadingCellIdentifier];
     
     self.tableView.rowHeight = 80;
-    
     [self.searchBar becomeFirstResponder];
     
     
@@ -74,7 +77,55 @@ static NSString *const LoadingCellIdentifier = @"LoadingCell";
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+//    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return YES;
+}
+
+-(void)showLandscapeViewWithDuration:(NSTimeInterval)duration
+{
+    if (landscapeViewController == nil) {
+        landscapeViewController = [[LandscapeViewController alloc]
+                                   initWithNibName:@"LandscapeViewController" bundle:nil];
+        landscapeViewController.view.frame = self.view.bounds;
+        landscapeViewController.view.alpha = 0.0f;
+        [self.view addSubview:landscapeViewController.view];
+        [self addChildViewController:landscapeViewController];
+        [UIView animateWithDuration:duration animations:^{
+            landscapeViewController.view.alpha = 1.0f;
+        } completion:^(BOOL finished) {
+            [landscapeViewController didMoveToParentViewController:self];
+        }];
+        [[UIApplication sharedApplication]
+         setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:YES];
+    } 
+}
+
+- (void)hideLandscapeViewWithDuration:(NSTimeInterval)duration
+{
+    if (landscapeViewController != nil) {
+        [landscapeViewController willMoveToParentViewController:nil];
+        [UIView animateWithDuration:duration animations:^{
+            landscapeViewController.view.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            [landscapeViewController.view removeFromSuperview];
+            [landscapeViewController removeFromParentViewController];
+            landscapeViewController = nil;
+        }];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault
+                                                    animated:YES];
+     }
+}
+
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+duration:(NSTimeInterval)duration
+{
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation
+                                   duration:duration];
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
+        [self hideLandscapeViewWithDuration:duration];
+    } else {
+        [self showLandscapeViewWithDuration:duration];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -90,14 +141,19 @@ static NSString *const LoadingCellIdentifier = @"LoadingCell";
     } else {
         return [searchResults count];
     }
-    
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.searchBar resignFirstResponder];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    DetailViewController *controller = [[DetailViewController alloc]
+                                        initWithNibName:@"DetailViewController" bundle:nil];
+    SearchResult *searchResult = [searchResults objectAtIndex:indexPath.row];
+    controller.searhResult = searchResult;
+    [controller presentInParentViewController:self];
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -138,16 +194,13 @@ static NSString *const LoadingCellIdentifier = @"LoadingCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
     if (isLoading) {
         return [tableView dequeueReusableCellWithIdentifier:LoadingCellIdentifier];
     } else if ([searchResults count] == 0) {
         return [tableView dequeueReusableCellWithIdentifier:NothingFoundCellIdentifier];
     } else {
             SearchResultCell *cell = (SearchResultCell *)[tableView dequeueReusableCellWithIdentifier:SearchResultCellIdentifier];
-        
         SearchResult *searchResult = [searchResults objectAtIndex:indexPath.row];
-        
         [cell configureForSearchResult:searchResult];
 
         return cell;
@@ -166,62 +219,64 @@ static NSString *const LoadingCellIdentifier = @"LoadingCell";
     
     [alertView show];
 }
+
 - (SearchResult *)parseAudioBook:(NSDictionary *)dictionary
 {
     SearchResult *searchResult = [[SearchResult alloc] init];
-    searchResult.name = [dictionary objectForKey:@"collectionName"];
-    searchResult.artistName = [dictionary objectForKey:@"artistName"];
-    searchResult.artworkURL60 = [dictionary objectForKey:@"artworkUrl60"];
+    searchResult.name          = [dictionary objectForKey:@"collectionName"];
+    searchResult.artistName    = [dictionary objectForKey:@"artistName"];
+    searchResult.artworkURL60  = [dictionary objectForKey:@"artworkUrl60"];
     searchResult.artworkURL100 = [dictionary objectForKey:@"artworkUrl100"];
-    searchResult.storeURL = [dictionary objectForKey:@"collectionViewUrl"];
-    searchResult.kind = @"audiobook";
-    searchResult.price = [dictionary objectForKey:@"collectionPrice"];
-    searchResult.currency = [dictionary objectForKey:@"currency"];
-    searchResult.genre = [dictionary objectForKey:@"primaryGenreName"];
+    searchResult.storeURL      = [dictionary objectForKey:@"collectionViewUrl"];
+    searchResult.kind          = @"audiobook";
+    searchResult.price         = [dictionary objectForKey:@"collectionPrice"];
+    searchResult.currency      = [dictionary objectForKey:@"currency"];
+    searchResult.genre         = [dictionary objectForKey:@"primaryGenreName"];
     return searchResult;
 }
 
 - (SearchResult *)parseSoftware:(NSDictionary *)dictionary
 {
     SearchResult *searchResult = [[SearchResult alloc] init];
-    searchResult.name = [dictionary objectForKey:@"trackName"];
-    searchResult.artistName = [dictionary objectForKey:@"artistName"];
-    searchResult.artworkURL60 = [dictionary objectForKey:@"artworkUrl60"];
+    searchResult.name          = [dictionary objectForKey:@"trackName"];
+    searchResult.artistName    = [dictionary objectForKey:@"artistName"];
+    searchResult.artworkURL60  = [dictionary objectForKey:@"artworkUrl60"];
     searchResult.artworkURL100 = [dictionary objectForKey:@"artworkUrl100"];
-    searchResult.storeURL = [dictionary objectForKey:@"trackViewUrl"];
-    searchResult.kind = [dictionary objectForKey:@"kind"];
-    searchResult.price = [dictionary objectForKey:@"price"];
-    searchResult.currency = [dictionary objectForKey:@"currency"];
-    searchResult.genre = [dictionary objectForKey:@"primaryGenreName"];
+    searchResult.storeURL      = [dictionary objectForKey:@"trackViewUrl"];
+    searchResult.kind          = [dictionary objectForKey:@"kind"];
+    searchResult.price         = [dictionary objectForKey:@"price"];
+    searchResult.currency      = [dictionary objectForKey:@"currency"];
+    searchResult.genre         = [dictionary objectForKey:@"primaryGenreName"];
     return searchResult;
 }
 
 - (SearchResult *)parseEBook:(NSDictionary *)dictionary
 {
     SearchResult *searchResult = [[SearchResult alloc] init];
-    searchResult.name = [dictionary objectForKey:@"trackName"];
-    searchResult.artistName = [dictionary objectForKey:@"artistName"];
-    searchResult.artworkURL60 = [dictionary objectForKey:@"artworkUrl60"];
+    searchResult.name          = [dictionary objectForKey:@"trackName"];
+    searchResult.artistName    = [dictionary objectForKey:@"artistName"];
+    searchResult.artworkURL60  = [dictionary objectForKey:@"artworkUrl60"];
     searchResult.artworkURL100 = [dictionary objectForKey:@"artworkUrl100"];
-    searchResult.storeURL = [dictionary objectForKey:@"trackViewUrl"];
-    searchResult.kind = [dictionary objectForKey:@"kind"];
-    searchResult.price = [dictionary objectForKey:@"price"];
-    searchResult.currency = [dictionary objectForKey:@"currency"];
+    searchResult.storeURL      = [dictionary objectForKey:@"trackViewUrl"];
+    searchResult.kind          = [dictionary objectForKey:@"kind"];
+    searchResult.price         = [dictionary objectForKey:@"price"];
+    searchResult.currency      = [dictionary objectForKey:@"currency"];
     searchResult.genre = [(NSArray *)[dictionary objectForKey:@"genres"] componentsJoinedByString:@", "];
     return searchResult;
 }
+
 - (SearchResult *)parseTrack:(NSDictionary *)dictionary
 {
     SearchResult *searchResult = [[SearchResult alloc] init];
-    searchResult.name = [dictionary objectForKey:@"trackName"];
-    searchResult.artistName = [dictionary objectForKey:@"artistName"];
-    searchResult.artworkURL60 = [dictionary objectForKey:@"artworkUrl60"];
+    searchResult.name          = [dictionary objectForKey:@"trackName"];
+    searchResult.artistName    = [dictionary objectForKey:@"artistName"];
+    searchResult.artworkURL60  = [dictionary objectForKey:@"artworkUrl60"];
     searchResult.artworkURL100 = [dictionary objectForKey:@"artworkUrl100"];
-    searchResult.storeURL = [dictionary objectForKey:@"trackViewUrl"];
-    searchResult.kind = [dictionary objectForKey:@"kind"];
-    searchResult.price = [dictionary objectForKey:@"trackPrice"];
-    searchResult.currency = [dictionary objectForKey:@"currency"];
-    searchResult.genre = [dictionary objectForKey:@"primaryGenreName"];
+    searchResult.storeURL      = [dictionary objectForKey:@"trackViewUrl"];
+    searchResult.kind          = [dictionary objectForKey:@"kind"];
+    searchResult.price         = [dictionary objectForKey:@"trackPrice"];
+    searchResult.currency      = [dictionary objectForKey:@"currency"];
+    searchResult.genre         = [dictionary objectForKey:@"primaryGenreName"];
     return searchResult;
 }
 
@@ -232,13 +287,10 @@ static NSString *const LoadingCellIdentifier = @"LoadingCell";
         NSLog(@"Expected 'results' array");
         return;
     }
-    
     for (NSDictionary *resultDict in array) {
         SearchResult *searchResult;
-        
         NSString *wrapperType = [resultDict objectForKey:@"wrapperType"];
         NSString *kind = [resultDict objectForKey:@"kind"];
-        
         if ([wrapperType isEqualToString:@"track"]) {
             searchResult = [self parseTrack:resultDict];
         } else if ([wrapperType isEqualToString:@"audiobook"]) {
@@ -248,12 +300,12 @@ static NSString *const LoadingCellIdentifier = @"LoadingCell";
         } else if ([kind isEqualToString:@"ebook"]) {
             searchResult = [self parseEBook:resultDict];
         }
-        
         if (searchResult != nil) {
             [searchResults addObject:searchResult];
         }
     }
 }
+
 /*
 - (NSDictionary *)parseJSON:(NSString *)jsonString
 {
@@ -280,14 +332,12 @@ static NSString *const LoadingCellIdentifier = @"LoadingCell";
         case 2: categoryName = @"software"; break;
         case 3: categoryName = @"ebook"; break;
     }
-    
-    
     NSString *escapedSearchText = [searchText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
     NSString *urlString = [NSString stringWithFormat:ItunesStringURL, escapedSearchText, categoryName];
     NSURL *url = [NSURL URLWithString:urlString];
     return url;
 }
+
 /*
 - (NSString *)performStoreRequestWithURL:(NSURL *)url
 {
@@ -299,7 +349,7 @@ static NSString *const LoadingCellIdentifier = @"LoadingCell";
     }
     return resultString;
 }
- */
+*/
 
 #pragma mark - UISearchBarDelegate
 - (void)performSearch
@@ -318,7 +368,6 @@ static NSString *const LoadingCellIdentifier = @"LoadingCell";
         
         NSURL *url = [self urlWithSearchText:self.searchBar.text category:self.segmentedControl.selectedSegmentIndex];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        
         AFJSONRequestOperation *operation = [AFJSONRequestOperation
                                              JSONRequestOperationWithRequest:request
                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -327,16 +376,13 @@ static NSString *const LoadingCellIdentifier = @"LoadingCell";
                                                  
                                                  isLoading = NO;
                                                  [self.tableView reloadData];
-                                                 
                                              } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                  [self showNetworkError];
                                                  isLoading = NO;
                                                  [self.tableView reloadData];
                                              }];
         operation.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", nil];
-
         [queue addOperation:operation];
-       
     }
 }
 

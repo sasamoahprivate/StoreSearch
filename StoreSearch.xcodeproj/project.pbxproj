@@ -54,6 +54,12 @@
 		BEAB72C4154F6789002C28C0 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAB72BA154F6789002C28C0 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BEAB72C8154F7B32002C28C0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BEAB72C6154F7B32002C28C0 /* Default.png */; };
 		BEAB72C9154F7B32002C28C0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BEAB72C7154F7B32002C28C0 /* Default@2x.png */; };
+		BEB7B7AB156020A300D56B24 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB7B7AA156020A300D56B24 /* GradientView.m */; };
+		BEB7B7AE156073DA00D56B24 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEB7B7AD156073DA00D56B24 /* QuartzCore.framework */; };
+		BEB7B7B21560B05800D56B24 /* LandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB7B7B01560B05800D56B24 /* LandscapeViewController.m */; };
+		BEB7B7B31560B05800D56B24 /* LandscapeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB7B7B11560B05800D56B24 /* LandscapeViewController.xib */; };
+		BEC6D45F155F781A006343A9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC6D45D155F781A006343A9 /* DetailViewController.m */; };
+		BEC6D460155F781A006343A9 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC6D45E155F781A006343A9 /* DetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +129,15 @@
 		BEAB72BA154F6789002C28C0 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		BEAB72C6154F7B32002C28C0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BEAB72C7154F7B32002C28C0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BEB7B7A9156020A300D56B24 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
+		BEB7B7AA156020A300D56B24 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
+		BEB7B7AD156073DA00D56B24 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BEB7B7AF1560B05800D56B24 /* LandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeViewController.h; sourceTree = "<group>"; };
+		BEB7B7B01560B05800D56B24 /* LandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeViewController.m; sourceTree = "<group>"; };
+		BEB7B7B11560B05800D56B24 /* LandscapeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandscapeViewController.xib; sourceTree = "<group>"; };
+		BEC6D45C155F781A006343A9 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		BEC6D45D155F781A006343A9 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		BEC6D45E155F781A006343A9 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEB7B7AE156073DA00D56B24 /* QuartzCore.framework in Frameworks */,
 				BE7F096C154C223F00D6CC65 /* UIKit.framework in Frameworks */,
 				BE7F096E154C223F00D6CC65 /* Foundation.framework in Frameworks */,
 				BE7F0970154C223F00D6CC65 /* CoreGraphics.framework in Frameworks */,
@@ -142,6 +158,7 @@
 		BE7F095C154C223F00D6CC65 = {
 			isa = PBXGroup;
 			children = (
+				BEB7B7AD156073DA00D56B24 /* QuartzCore.framework */,
 				BE7F0971154C223F00D6CC65 /* StoreSearch */,
 				BE7F096A154C223F00D6CC65 /* Frameworks */,
 				BE7F0968154C223F00D6CC65 /* Products */,
@@ -174,6 +191,9 @@
 				BE7F097D154C223F00D6CC65 /* SearchViewController.h */,
 				BE7F097E154C223F00D6CC65 /* SearchViewController.m */,
 				BE7F0980154C223F00D6CC65 /* SearchViewController.xib */,
+				BEC6D45C155F781A006343A9 /* DetailViewController.h */,
+				BEC6D45D155F781A006343A9 /* DetailViewController.m */,
+				BEC6D45E155F781A006343A9 /* DetailViewController.xib */,
 				BEAB72C5154F7B32002C28C0 /* Launch Images */,
 				BEAB72A4154F6789002C28C0 /* AFNetworking */,
 				BE7F09B1154C8AD700D6CC65 /* Icon */,
@@ -186,6 +206,11 @@
 				BE7F09AD154C6E0A00D6CC65 /* SearchResultCell.m */,
 				BE7F09AF154C842D00D6CC65 /* NothingFoundCell.xib */,
 				BEAB72A1154E1B46002C28C0 /* LoadingCell.xib */,
+				BEB7B7A9156020A300D56B24 /* GradientView.h */,
+				BEB7B7AA156020A300D56B24 /* GradientView.m */,
+				BEB7B7AF1560B05800D56B24 /* LandscapeViewController.h */,
+				BEB7B7B01560B05800D56B24 /* LandscapeViewController.m */,
+				BEB7B7B11560B05800D56B24 /* LandscapeViewController.xib */,
 			);
 			path = StoreSearch;
 			sourceTree = "<group>";
@@ -355,6 +380,8 @@
 				BEAB72A2154E1B46002C28C0 /* LoadingCell.xib in Resources */,
 				BEAB72C8154F7B32002C28C0 /* Default.png in Resources */,
 				BEAB72C9154F7B32002C28C0 /* Default@2x.png in Resources */,
+				BEC6D460155F781A006343A9 /* DetailViewController.xib in Resources */,
+				BEB7B7B31560B05800D56B24 /* LandscapeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +407,9 @@
 				BEAB72C2154F6789002C28C0 /* AFURLConnectionOperation.m in Sources */,
 				BEAB72C3154F6789002C28C0 /* AFXMLRequestOperation.m in Sources */,
 				BEAB72C4154F6789002C28C0 /* UIImageView+AFNetworking.m in Sources */,
+				BEC6D45F155F781A006343A9 /* DetailViewController.m in Sources */,
+				BEB7B7AB156020A300D56B24 /* GradientView.m in Sources */,
+				BEB7B7B21560B05800D56B24 /* LandscapeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

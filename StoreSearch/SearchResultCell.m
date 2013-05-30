@@ -11,8 +11,8 @@
 #import "UIImageView+AFNetworking.h"
 
 @implementation SearchResultCell
-@synthesize nameLabel = _nameLabel;
-@synthesize artistNameLabel = _artistNameLabel;
+@synthesize nameLabel        = _nameLabel;
+@synthesize artistNameLabel  = _artistNameLabel;
 @synthesize artworkImageView = _artworkImageView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -30,6 +30,7 @@
 
     // Configure the view for the selected state
 }
+
 -(void)awakeFromNib
 {
     [super awakeFromNib];
@@ -82,9 +83,9 @@
     self.artistNameLabel.text = [NSString stringWithFormat:@"%@ (%@)", artistName, kind];
     
     [self.artworkImageView setImageWithURL:
-     [NSURL URLWithString:searchResult.artworkURL60] placeholderImage:[UIImage
-                                                                                                       imageNamed:@"Placeholder"]];
+     [NSURL URLWithString:searchResult.artworkURL60] placeholderImage:[UIImage imageNamed:@"Placeholder"]];
 }
+
 - (void)prepareForReuse
 {
     [super prepareForReuse];
